@@ -40,3 +40,72 @@ document.addEventListener("DOMContentLoaded", function (event) {
     var scoreList = [];
     var maxScore = 0;
     var scoreShown = false;
+    instructions.textContent = ("Your score is the number of correct answers times "+problemTime+", plus the time remaining. Careful - wrong answers will also subtract "+penalty+" seconds from the time remaining!");
+
+    function shuffle(array) {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+
+       
+        while (0 !== currentIndex) {
+
+            
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+
+            
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+        return array;
+    }
+
+    
+    function setQuestion(index) {
+        questText.textContent = questions[index].title;
+        let choiceArray = questions[index].choices
+        choiceArray = shuffle(choiceArray)      
+        a.textContent = choiceArray[0];
+        b.textContent = choiceArray[1];
+        c.textContent = choiceArray[2];
+        d.textContent = choiceArray[3];
+    }
+
+   
+    startBtn.addEventListener("click", function () {
+        initCard.style.display = "none";
+        questCard.style.display = "block";
+        beginGame();
+    });
+
+    
+    scoreLink.addEventListener("click", function (event) {
+        event.preventDefault();
+        if (scoreShown) {
+            scoreShown = false;
+            scoreCard.style.display = "none";
+        } else {
+            scoreShown = true;
+            scoreCard.style.display = "block";
+        }
+        scoreSet();
+    });
+
+    scoreCard.style.display = "none";  
+
+   
+    clearBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+        clearScores();
+    });
+
+    
+    var addBtns = document.getElementsByClassName("answerBtn");
+    for (var i = 0; i < addBtns.length; i++) {
+        
+        addBtns[i].addEventListener("click", userChoice, false);
+
+    }
+
+   
+    scoreSet();
