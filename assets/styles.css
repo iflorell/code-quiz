@@ -1,0 +1,53 @@
+body {
+    padding-top: 70px;
+   
+  }
+
+  textarea {
+    resize: none;
+    height: 100px;
+}
+
+  #questionCard {
+      display: none;
+      color:#5f067a;
+  }
+
+  .navbar-text {
+    font-weight: bold;
+   
+    
+  }
+  .btn-primary {
+    color:white ;
+    background-color :#5f067a;
+   
+}
+#scoreText {
+    color: #5f067a;
+}
+
+  #timerText {
+    color: #fff;
+    display: inline-block;
+    font-weight: bold;
+    color: #5f067a;
+    text-align: center;
+    vertical-align: middle;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+  }
+
+  #scoreCard {
+   color : #5f067a;
+    margin-top: 20px;
+  }
+
+  div.listBody {
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
+    text-align: left;
+  }
