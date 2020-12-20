@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>JS Quiz</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="./assets/styles/style.css">
+</head>
+
+<body>
+  <nav class="navbar fixed-top navbar-light bg-light">
+    <span id="scoreLink" class="navbar-text btn btn-primary">
+      High Scores</span>
+    <a class="navbar-brand">JavaScript Quiz</a>
+    <span id="timerText" class="navbar-text">
+      Timer: <span id="timer">0</span>
+    </span>
+  </nav>
+
+  
+  <div id="initalCard">
+    <div class="row justify-content-center">
+      <div class="col col-sm-10 col-md-8 align-self-center">
+        <div class="card text-center">
+          <h5 id="alert" class="card-header">Previous High Score</h5>
+          <div class="card-body">
+            <h5 class="card-title">Click the button to begin!</h5>
+            <p id="instructions" class="card-text"></p>
+            <span id="startButton" class="btn btn-primary">Start!</span>
+          </div>
+          <div class="card-footer text-muted">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div id="questionCard">
+    <div class="row justify-content-center">
+      <div class="col col-sm-10 col-md-8 align-self-center">
+        <div class="card">
+          <textarea id="questionPrompt" class="card-header">Question 1</textarea>
+          <div id="answerArea" class="card-body">
+           
+            <span id="AAnswerBtn" class="answerBtn btn btn-primary">- A -</span>
+            <span id="AAnswer" class="card-text">Answer A</span>
+            <hr>
+            <span id="BAnswerBtn" class="answerBtn btn btn-primary">- B -</span>
+            <span id="BAnswer" class="card-text">Answer B</span>
+            <hr>
+            <span id="CAnswerBtn" class="answerBtn btn btn-primary">- C -</span>
+            <span id="CAnswer" class="card-text">Answer C</span>
+            <hr>
+            <span id="DAnswerBtn" class="answerBtn btn btn-primary">- D -</span>
+            <span id="DAnswer" class="card-text">Answer D</span>
+            <hr>
+          </div>
+          <div id="footer" class="card-footer text-muted">
+            Answer...
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ 
+  <div id="scoreCard">
+    <div class="row justify-content-center">
+      <div class="col col-sm-10 col-md-8 align-self-center">
+        <div class="card text-center">
+          <h5 class="card-header">High Scores:</h5>
+          <div class="listBody card-body">
+            <ol id="highScore-list"></ol>
+          </div>
+          <div id="clearBtnArea" class="card-footer text-muted">
+            <span id="clearBtn" class="btn btn-primary">Clear Scores</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="./assets/javascript/questions.js"></script>
+  <script src="./assets/javascript/script.js"></script>
+
+</body>
+
+</html>
