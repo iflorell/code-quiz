@@ -16,3 +16,23 @@ var questions = [
         choices: ["commas", "curly brackets", "quotes", "parentheses"],
         answer: "quotes"
     },
+    {
+        title: "A very useful tool used during development and debugging for printing content to the debugger is:",
+        choices: ["JavaScript", "terminal/bash", "for loops", "console.log"],
+        answer: "console.log"
+    },
+    
+    {
+        title: "Which of the following is not a reserved word in JavaScript?",
+        choices: ["interface","throws", "program", "short"],
+        answer: "program"
+    },
+   
+    {
+        title: "A very useful tool used during development and debugging for printing content to the debugger is:",
+        choices: ["JavaScript", "terminal/bash", "for loops", "console.log"],
+        answer: "console.log"
+    }
+
+  
+];
