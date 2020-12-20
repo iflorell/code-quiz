@@ -109,3 +109,130 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
    
     scoreSet();
+    function userChoice(event) {
+        event.preventDefault();
+
+        let userAnswer = "";
+        userAnswer = event.target.nextElementSibling.textContent;
+     
+        if (userAnswer === newQuestions[iter].answer) {
+            console.log("win");
+            console.log(iter);
+            correct++;
+            footer.textContent = "Right!"
+        } else {
+            console.log("lose");
+            console.log(iter);
+            timer -= penalty; 
+            wrong++;
+            if (wrong > 1) {
+                questCard.classList.remove("shake");
+                void questCard.offsetWidth;  
+                questCard.classList.add("shake");
+
+            } else { questCard.classList.add("shake"); }
+            footer.textContent = "Wrong!"
+        }
+        if (iter < (newQuestions.length - 1)) {
+            iter++;
+            setQuestion(iter);
+        } else if (iter === (newQuestions.length - 1)) {  
+            iter++;
+        }
+
+    }
+
+
+    function scoreSet() {
+        scoreList = JSON.parse(localStorage.getItem("scores") || "[]");
+        highScoreList.innerHTML = "";
+        console.log(scoreList);
+
+        scoreList.sort(function (a, b) { 
+            return parseInt(b.score) - parseInt(a.score); 
+        });
+        console.log(scoreList);
+
+        if (scoreList.length === 0) { 
+            clearBtnArea.style.display = "none";
+            alert.textContent = "See how well you can do!";
+        } else {
+            clearBtnArea.style.display = "block";
+            maxScore = scoreList[0].score; 
+            alert.textContent = "Previous high score: " + maxScore;
+        }
+        
+        for (let j = 0; j < scoreList.length; j++) {
+            var scoreDisp = scoreList[j].user + ": " + scoreList[j].score;
+
+            var li = document.createElement("li");
+            li.textContent = scoreDisp;
+            highScoreList.appendChild(li);
+        }
+    }
+
+        
+    function clearScores() {
+        scoreList = [];
+        localStorage.setItem("scores", JSON.stringify(scoreList));
+        scoreSet();
+
+    }
+
+   
+    function endGame() {
+        clearInterval(interval);
+        endTime = timer;
+        timer = 0;
+        timerDisp.textContent = timer;
+        console.log("wins " + correct + ", Losses " + wrong + ", " + endTime);
+        initCard.style.display = "block";
+        questCard.style.display = "none";
+
+        let highscore = (correct * problemTime + endTime);  
+        let userInput = prompt(`Your score is ${correct * problemTime + endTime}. Enter your initials:`);  //given more time, I wouldn't use a prompt
+        if (userInput === null) {  
+            userInput = "???";
+        }
+        scoreList = JSON.parse(localStorage.getItem("scores") || "[]");
+        scoreList.push({ score: highscore, user: userInput });
+
+        localStorage.setItem("scores", JSON.stringify(scoreList));
+        scoreSet();
+
+        footer.textContent = "Going to better your score..?";  
+    }
+
+
+    function beginGame() {
+        correct = 0;
+        wrong = 0;
+        iter = 0;
+        timer = questions.length * problemTime;  
+
+        questCard.classList.remove("shake"); 
+        void questCard.offsetWidth; 
+
+        newQuestions = shuffle(newQuestions);  
+
+        setQuestion(iter);
+
+        interval = setInterval(function () {   
+
+            timerDisp.textContent = timer;
+            timer--;
+
+            if (timer < 0) {  
+                endGame();
+
+            } else if (iter >= newQuestions.length) {  
+                endGame();
+            }
+
+
+        }, 1000);
+
+    }
+
+
+});
