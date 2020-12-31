@@ -109,6 +109,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
    
     scoreSet();
+
+    
     function userChoice(event) {
         event.preventDefault();
 
